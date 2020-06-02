@@ -10,9 +10,9 @@ typedef unsigned int   U32;
 
 #define Log(x) std::cout << x << std::endl
 
-
 int main()
 {
+	bool bHome;
 	I32 var = 0;
 	I32* ptr = &var;//c++指针大小和指向的地址类型无关,WIN32 4字节
 	*ptr = 100;
