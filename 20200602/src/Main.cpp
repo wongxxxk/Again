@@ -10,9 +10,45 @@ typedef unsigned int   U32;
 
 #define Log(x) std::cout << x << std::endl
 
+class Player//类≈结构体，多方法有继承 用类
+{
+public://允许外部访问，默认私有不可访问的
+	int PlayerX = 1, PlayerY = 1;
+	int speed = 1;
+
+	void Move( int xa, int ya)//拥有的function,操作类中的变量\仅仅是语法糖
+	{
+		PlayerX += xa * speed;
+		PlayerY += ya * speed;
+	}
+};
+
+struct stPlayer//结构体，一堆变量和简单方法用结构体
+{
+	int PlayerX = 1, PlayerY = 1;
+	int speed = 1;
+
+	void Move(int xa, int ya)
+	{
+		PlayerX += xa * speed;
+		PlayerY += ya * speed;
+	}
+};
+
 int main()
 {
-	bool bHome;
+	Player Player1;//实例化
+	stPlayer Player2;//C++结构体,不用struct
+	Player1.Move(1, -1);
+	Player2.Move(3, -3);
+	Log(Player1.PlayerX);
+	Log(Player2.PlayerX);
+
+	std::cin.get();
+
+
+/*
+	bool bHome;//Home clone成功
 	I32 var = 0;
 	I32* ptr = &var;//c++指针大小和指向的地址类型无关,WIN32 4字节
 	*ptr = 100;
@@ -25,5 +61,5 @@ int main()
 	Log(var);
 
 	return 0;
-	std::cin.get();
+*/
 }
