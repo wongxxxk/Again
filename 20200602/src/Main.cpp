@@ -1,14 +1,15 @@
 #include <iostream>
+#include "SysLog.h"
 //#include "Log.h"
 //ALT+G 可看反汇编(从汇编层面优化)
 typedef char	I8;
 typedef short	I16;
-typedef int		I32;
+typedef int	I32;
 typedef float	f32;
 typedef unsigned short U16;
 typedef unsigned int   U32;
 
-#define Log(x) std::cout << x << std::endl
+#define Out(x) std::cout << x << std::endl
 
 class Player//类≈结构体，多方法有继承 用类
 {
@@ -35,17 +36,24 @@ struct stPlayer//结构体，一堆变量和简单方法用结构体
 	}
 };
 
+extern int NormalVar;//函数同理
+
 int main()
 {
-	Player Player1;//实例化
-	stPlayer Player2;//C++结构体,不用struct
+	static Player Player1;//实例化
+	static stPlayer Player2;//C++结构体,不用struct
 	Player1.Move(1, -1);
 	Player2.Move(3, -3);
-	Log(Player1.PlayerX);
-	Log(Player2.PlayerX);
+	Out(Player1.PlayerX);
+	Out(Player2.PlayerX);
+	SysLog syslog;
+	syslog.SetLevel(syslog.LogLevelInfo);
+	syslog.Error("Hello");
+	syslog.Warn("Hello");
+	syslog.Info("Hello");
+	Out("Extern："<<NormalVar);
 
 	std::cin.get();
-
 
 /*
 	bool bHome;//Home clone成功

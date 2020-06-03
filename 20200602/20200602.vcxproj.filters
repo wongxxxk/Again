@@ -21,9 +21,18 @@
     <ClCompile Include="src\Log.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="src\SysLog.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Static_Extern.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Log.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\SysLog.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

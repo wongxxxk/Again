@@ -140,9 +140,12 @@
   <ItemGroup>
     <ClCompile Include="src\Log.cpp" />
     <ClCompile Include="src\Main.cpp" />
+    <ClCompile Include="src\SysLog.cpp" />
+    <ClCompile Include="src\Static_Extern.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Log.h" />
+    <ClInclude Include="src\SysLog.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
