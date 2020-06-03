@@ -27,12 +27,27 @@
     <ClCompile Include="src\Static_Extern.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="src\Singleton.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Constructors.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Log.h">
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="src\SysLog.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Satatic_Extern.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Singleton.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Constructors.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

@@ -1,7 +1,7 @@
 #include <iostream>
 #include "SysLog.h"
 
-void SysLog::SetLevel(int level)
+void SysLog::SetLevel(Level level)
 {
 	m_LogLevel = level;
 }

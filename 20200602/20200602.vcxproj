@@ -138,12 +138,17 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\Constructors.cpp" />
+    <ClCompile Include="src\Singleton.cpp" />
     <ClCompile Include="src\Log.cpp" />
     <ClCompile Include="src\Main.cpp" />
     <ClCompile Include="src\SysLog.cpp" />
     <ClCompile Include="src\Static_Extern.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\Constructors.h" />
+    <ClInclude Include="Satatic_Extern.h" />
+    <ClInclude Include="src\Singleton.h" />
     <ClInclude Include="src\Log.h" />
     <ClInclude Include="src\SysLog.h" />
   </ItemGroup>

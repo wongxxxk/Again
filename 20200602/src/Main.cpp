@@ -1,5 +1,9 @@
 #include <iostream>
 #include "SysLog.h"
+#include "../Satatic_Extern.h"
+#include "Singleton.h"
+#include "Constructors.h"
+
 //#include "Log.h"
 //ALT+G 可看反汇编(从汇编层面优化)
 typedef char	I8;
@@ -36,22 +40,54 @@ struct stPlayer//结构体，一堆变量和简单方法用结构体
 	}
 };
 
+struct Entity
+{
+	static int x, y;
+};
+
 extern int NormalVar;//函数同理
+
+int Entity::x = 10;//类静态成员初始化
+//静态变量允许外部申请,可以共享到所有的类变量,实现数据共享
+int Entity::y= 20;
 
 int main()
 {
 	static Player Player1;//实例化
 	static stPlayer Player2;//C++结构体,不用struct
+	Entity E1,E2;
 	Player1.Move(1, -1);
 	Player2.Move(3, -3);
 	Out(Player1.PlayerX);
 	Out(Player2.PlayerX);
 	SysLog syslog;
-	syslog.SetLevel(syslog.LogLevelInfo);
+	syslog.SetLevel(SysLog::LogLevelInfo);
 	syslog.Error("Hello");
 	syslog.Warn("Hello");
 	syslog.Info("Hello");
+	Out("enum: 每个枚举size"<<sizeof(SysLog::LogLevelError));//默认4字节，也可设置类型
 	Out("Extern："<<NormalVar);
+	E1.x = 5;
+//	Entity::x = 5;
+	E2.x = 6;
+	Out(E1.x);//类静态成员
+	Out(E2.x);
+	Out(E1.y);
+	Out(E2.y);
+
+	for(int i = 0;i < 5 ;i++)
+		Satatic_add();
+
+	Singleton& RealInstance = Singleton::GetInstance();//每次调用Singleton::GetInstance()都会拿到同一实例
+	for (int i = 0; i < 6; i++)
+	{
+		RealInstance.HelloSingleton();
+		Out("HelloSingleton: " << RealInstance.var);//同一实例中的变量也是静态的
+	}
+
+	Constructorswk Con(5.5f,6.5f);
+	Out("重载&初始化");
+	Con.print();
 
 	std::cin.get();
 
