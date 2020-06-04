@@ -138,6 +138,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\Inheritance.cpp" />
     <ClCompile Include="src\Constructors.cpp" />
     <ClCompile Include="src\Singleton.cpp" />
     <ClCompile Include="src\Log.cpp" />
@@ -146,6 +147,7 @@
     <ClCompile Include="src\Static_Extern.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\Inheritance.h" />
     <ClInclude Include="src\Constructors.h" />
     <ClInclude Include="Satatic_Extern.h" />
     <ClInclude Include="src\Singleton.h" />

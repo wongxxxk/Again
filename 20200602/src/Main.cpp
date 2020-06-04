@@ -3,6 +3,7 @@
 #include "../Satatic_Extern.h"
 #include "Singleton.h"
 #include "Constructors.h"
+#include "Inheritance.h"
 
 //#include "Log.h"
 //ALT+G 可看反汇编(从汇编层面优化)
@@ -51,6 +52,17 @@ int Entity::x = 10;//类静态成员初始化
 //静态变量允许外部申请,可以共享到所有的类变量,实现数据共享
 int Entity::y= 20;
 
+void Construction_Destruction()
+{
+	Constructorswk Con(5.5f, 6.5f);
+	Out("构造函数");
+	Con.print();
+	Out("");
+	Constructorswk Ion(1, 2);
+	Out("参数不同的构造函数");
+	Ion.print();
+}
+
 int main()
 {
 	static Player Player1;//实例化
@@ -84,10 +96,16 @@ int main()
 		RealInstance.HelloSingleton();
 		Out("HelloSingleton: " << RealInstance.var);//同一实例中的变量也是静态的
 	}
-
-	Constructorswk Con(5.5f,6.5f);
-	Out("重载&初始化");
-	Con.print();
+//------------构造\析构------------------------
+	Out("");
+	Construction_Destruction();
+//************继承\友元**********************
+	Out('\n'<<"继承");
+	ChildInheritance AAA;
+	AAA.Copy(5.0f);
+	AAA.f_PB = 6.0f;
+	AAA.ChildAdd();
+	fri_Test(AAA);//友元函数，可以访问本类的Private和Protected
 
 	std::cin.get();
 
