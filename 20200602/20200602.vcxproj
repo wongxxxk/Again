@@ -138,6 +138,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\PrueVirtual.cpp" />
     <ClCompile Include="src\Inheritance.cpp" />
     <ClCompile Include="src\Constructors.cpp" />
     <ClCompile Include="src\Singleton.cpp" />
@@ -145,14 +146,17 @@
     <ClCompile Include="src\Main.cpp" />
     <ClCompile Include="src\SysLog.cpp" />
     <ClCompile Include="src\Static_Extern.cpp" />
+    <ClCompile Include="src\VirtualFun.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\PrueVirtual.h" />
     <ClInclude Include="src\Inheritance.h" />
     <ClInclude Include="src\Constructors.h" />
     <ClInclude Include="Satatic_Extern.h" />
     <ClInclude Include="src\Singleton.h" />
     <ClInclude Include="src\Log.h" />
     <ClInclude Include="src\SysLog.h" />
+    <ClInclude Include="src\VirtualFun.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

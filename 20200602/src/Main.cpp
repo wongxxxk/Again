@@ -4,7 +4,8 @@
 #include "Singleton.h"
 #include "Constructors.h"
 #include "Inheritance.h"
-
+#include "VirtualFun.h"
+#include "PrueVirtual.h"
 //#include "Log.h"
 //ALT+G 可看反汇编(从汇编层面优化)
 typedef char	I8;
@@ -18,7 +19,7 @@ typedef unsigned int   U32;
 
 class Player//类≈结构体，多方法有继承 用类
 {
-public://允许外部访问，默认私有不可访问的
+public://公开
 	int PlayerX = 1, PlayerY = 1;
 	int speed = 1;
 
@@ -27,6 +28,9 @@ public://允许外部访问，默认私有不可访问的
 		PlayerX += xa * speed;
 		PlayerY += ya * speed;
 	}
+private://本类\友元函数允许，派生\对象都不允许
+
+protected://只允许子类和(friend关键字,不属于类成员，但可以访问类成员)友元函数改变
 };
 
 struct stPlayer//结构体，一堆变量和简单方法用结构体
@@ -52,6 +56,11 @@ int Entity::x = 10;//类静态成员初始化
 //静态变量允许外部申请,可以共享到所有的类变量,实现数据共享
 int Entity::y= 20;
 
+void PrintName(VirtualFun* entity)//基类的指针允许指向派生类（多态实现）
+{
+	Out(entity->GetName());
+}
+
 void Construction_Destruction()
 {
 	Constructorswk Con(5.5f, 6.5f);
@@ -65,7 +74,7 @@ void Construction_Destruction()
 
 int main()
 {
-	static Player Player1;//实例化
+	static Player Player1;//手动实例化
 	static stPlayer Player2;//C++结构体,不用struct
 	Entity E1,E2;
 	Player1.Move(1, -1);
@@ -99,13 +108,30 @@ int main()
 //------------构造\析构------------------------
 	Out("");
 	Construction_Destruction();
-//************继承\友元**********************
+//************继承\友元函数**********************
 	Out('\n'<<"继承");
 	ChildInheritance AAA;
 	AAA.Copy(5.0f);
 	AAA.f_PB = 6.0f;
 	AAA.ChildAdd();
 	fri_Test(AAA);//友元函数，可以访问本类的Private和Protected
+//--------------虚函数(派生重写基类)-------------
+	Out("");
+	VirtualFun* BB = new VirtualFun();
+	VirtualTest* BBB = new VirtualTest("wongkang!VirtualFunction!");
+/*
+new了才有实例,基本等于ptr* a =(*ptr)malloc(sizeof(ptr));
+new自动计算申请内存大小；
+new和delete在对象创建的时候自动执行构造函数，对象消亡之前会自动执行析构函数。
+*/
+	PrintName(BB);
+	PrintName(BBB);
+//---------------纯虚函数(接口\抽象类)--------------------------------
+	Out("");
+	PrueVirtualTestA CC;
+	PrueVirtualTestB CCC;
+	CC.Prue();
+	CCC.Prue();
 
 	std::cin.get();
 
