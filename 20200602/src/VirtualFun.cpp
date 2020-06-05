@@ -5,7 +5,7 @@ std::string VirtualFun::GetName()
 	return "Entity";//基类返回
 }
 
-VirtualTest::VirtualTest(const std::string& name) : m_Name(name)
+VirtualTest::VirtualTest(const std::string& name) : m_Name(name)//初始化列表,要按顺序初始化
 {
 
 }

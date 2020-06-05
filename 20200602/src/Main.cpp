@@ -1,4 +1,5 @@
 #include <iostream>
+#include <string>
 #include "SysLog.h"
 #include "../Satatic_Extern.h"
 #include "Singleton.h"
@@ -126,15 +127,31 @@ new和delete在对象创建的时候自动执行构造函数，对象消亡之前会自动执行析构函数。
 */
 	PrintName(BB);
 	PrintName(BBB);
-//---------------纯虚函数(接口\抽象类)--------------------------------
+//---------------纯虚函数(接口\抽象类)------
 	Out("");
 	PrueVirtualTestA CC;
 	PrueVirtualTestB CCC;
 	CC.Prue();
 	CCC.Prue();
+//-----------------字符串----------------
+	Out("");
+	std::string name = std::string("wong") + "kang";
+	Out("std::string字节数: "<< sizeof(name));
+	std::wstring wname = std::wstring(L"wong") + L"kang";
+	Out("L\"wongkang\" 字节数: " <<sizeof(L"wongkang"));//宽字符类型wchar_t\char_16t\char_32t
+//--------------Constc常量-------Mutable可修改的-------------
+	int* const d = new int;//可修改变量，不能修改指向地址
+	const int* dd = new int;//不可修改变量，可指向其它地址
+	const int* const ddd = new int;//初始化后什么都不能改
+//--------------Ternary Operator三目运算符---------------------------------
+	int i_speed = 65;
+	i_speed = i_speed < 5 ? 5 : 10;//Same With C, TRUE = 5 FALSE = 10
+	Out(i_speed);
+	std::string rank = i_speed > 5 ? "CCC" : i_speed > 10 ? "DDD" : "AAA";
+	Out(rank);
 
 	std::cin.get();
-
+}
 /*
 	bool bHome;//Home clone成功
 	I32 var = 0;
@@ -150,4 +167,3 @@ new和delete在对象创建的时候自动执行构造函数，对象消亡之前会自动执行析构函数。
 
 	return 0;
 */
-}
