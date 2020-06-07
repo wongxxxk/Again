@@ -13,6 +13,7 @@ private:
 	std::string m_Name;
 
 public:
+	VirtualTest();
 	VirtualTest(const std::string& name);//构造函数;const关键字表示不会修改,只读
 	std::string GetName() override;//复写申明'Override'
 };

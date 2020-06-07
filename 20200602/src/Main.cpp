@@ -149,10 +149,33 @@ new和delete在对象创建的时候自动执行构造函数，对象消亡之前会自动执行析构函数。
 	Out(i_speed);
 	std::string rank = i_speed > 5 ? "CCC" : i_speed > 10 ? "DDD" : "AAA";
 	Out(rank);
-	//123
+//--------------Create/Instantiate Objects(创建\实例对象)---------------
+	Out("");
+	VirtualTest* pSS;
+	{
+		VirtualTest SS("Cherno");//函数结束后，SS被释放(栈)
+		pSS = &SS;
+		Out(pSS->GetName());
+	}
+	if (pSS->GetName() == "")//证明被弹出了
+	{
+		Out("Null");
+	}
+
+	{
+		VirtualTest* pSSS = new VirtualTest("wangk");//堆上申请内存，不delete，这块内存一直存在
+		pSS = pSSS;
+		Out(pSSS->GetName());
+	}
+	delete pSS;//释放掉该内存
+
+
+
+	//Out(pSS->GetName());
 	std::cin.get();
 }
 /*
+	Log(var);
 	bool bHome;//Home clone成功
 	I32 var = 0;
 	I32* ptr = &var;//c++指针大小和指向的地址类型无关,WIN32 4字节
@@ -162,8 +185,7 @@ new和delete在对象创建的时候自动执行构造函数，对象消亡之前会自动执行析构函数。
 	memset(buffer, 0, 8);
 	delete[] buffer;//释放掉
 
-	int& ref = var;// 引用不会真的创建ref变量，只是更方便≈ (int* ref = &var)
-	Log(var);
+	int& ref = var;//引用不会真的创建ref变量，只是更方便取地址
 
 	return 0;
 */

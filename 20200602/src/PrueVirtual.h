@@ -2,7 +2,7 @@
 class PrueVirtual
 {
 public:
-	virtual void Prue() = 0;
+	virtual void Prue() = 0;//´¿ÐéÄâº¯Êý
 };
 
 class PrueVirtualTestA : public PrueVirtual
