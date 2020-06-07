@@ -149,7 +149,7 @@ new和delete在对象创建的时候自动执行构造函数，对象消亡之前会自动执行析构函数。
 	Out(i_speed);
 	std::string rank = i_speed > 5 ? "CCC" : i_speed > 10 ? "DDD" : "AAA";
 	Out(rank);
-
+	//123
 	std::cin.get();
 }
 /*
