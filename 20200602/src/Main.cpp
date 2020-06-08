@@ -7,7 +7,9 @@
 #include "Inheritance.h"
 #include "VirtualFun.h"
 #include "PrueVirtual.h"
-#include "../Implicit_Explicit.h"
+#include "Implicit_Explicit.h"
+#include "KeyWordThis.h"
+#include <memory>//智能指针
 
 //#include "Log.h"
 //ALT+G 可看反汇编(从汇编层面优化)
@@ -174,9 +176,77 @@ new和delete在对象创建的时候自动执行构造函数，对象消亡之前会自动执行析构函数。
 	Out("");
 	Implicit_Explicit im0 = 22;//隐式转换
 	Implicit_Explicit im1("Hello");//explicit关键字限制隐式转换
-//--------------------------------------------------
+//-----------------符号重构--------------------------(可重构任意操作符)
+//-------------------this----------------------------
+	Out("");
+	KeyWordThis(1994, 1997);//每一个对象都能通过 this 指针来访问自己的地址
+//------Object's Lifttime
+	Out("this指针----------------------------------------------");
+	class Lifttime
+	{
+	public:
+		Lifttime()
+		{
+			Out("Creat");
+		}
+		~Lifttime()
+		{
+			Out("Destroyed");
+		}
 
+		void printf()
+		{};
+	};
+	class ScopedPtr
+	{
+	private:
+		Lifttime* m_Ptr;
+	public:
+		ScopedPtr(Lifttime* Ptr) :
+			m_Ptr(Ptr)
+		{
+		}
 
+		~ScopedPtr()
+		{
+			delete m_Ptr;
+		}
+
+	};
+	{
+		Lifttime e;//进函数内入栈，超出变量生存范围(出栈)
+		ScopedPtr eee(new Lifttime());//ScopedPtr同样受生存范围控制(只要不是申请堆内存，都有实际变量域)，出了括号，自动触发析构
+		Lifttime* ee = new Lifttime();//申请了堆内存,需要delete
+	}
+//------------------智能指针------------------------------
+	Out("智能指针---------------------------------------------");
+	{//唯一指针
+		Out("unique唯一指针: ");
+		std::unique_ptr<Lifttime> smart_uniqueptr = std::make_unique<Lifttime>();//unique_ptr(唯一指针，只有一个指针能指向该内存地址)静止隐式转换;可自动销毁
+/*
+																	//智能指针的创建
+																	unique_ptr<int> u_i; 	//创建空智能指针
+																	u_i.reset(new int(3)); 	//绑定动态对象
+																	unique_ptr<int> u_i2(new int(4));//创建时指定动态对象
+																	unique_ptr<T,D> u(d);	//创建空 unique_ptr，执行类型为 T 的对象，用类型为 D 的对象 d 来替代默认的删除器 delete
+																	//所有权的变化
+																	int *p_i = u_i2.release();	//释放所有权
+																	unique_ptr<string> u_s(new string("abc"));
+																	unique_ptr<string> u_s2 = std::move(u_s); //所有权转移(通过移动语义)，u_s所有权转移后，变成“空指针”
+																	u_s2.reset(u_s.release());	//所有权转移
+																	u_s2=nullptr;//显式销毁所指对象，同时智能指针变为空指针。与u_s2.reset()等价
+*/
+		smart_uniqueptr->printf();
+	}
+	{
+		std::shared_ptr<Lifttime> sharedptr;
+		{//共享指针,当所有指向该内存地址的指针都消失后，对象才会自动delete
+			Out("shaerd共享指针:");
+			std::shared_ptr<Lifttime> smart_sharedptr = std::make_shared<Lifttime>();
+			sharedptr = smart_sharedptr;
+		}
+	}
+	
 	std::cin.get();
 }
 /*

@@ -42,7 +42,10 @@
     <ClCompile Include="src\PrueVirtual.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="Implicit_Explicit.cpp">
+    <ClCompile Include="src\Implicit_Explicit.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\KeyWordThis.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
@@ -71,7 +74,10 @@
     <ClInclude Include="src\PrueVirtual.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="Implicit_Explicit.h">
+    <ClInclude Include="src\Implicit_Explicit.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\KeyWordThis.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
