@@ -7,6 +7,8 @@
 #include "Inheritance.h"
 #include "VirtualFun.h"
 #include "PrueVirtual.h"
+#include "../Implicit_Explicit.h"
+
 //#include "Log.h"
 //ALT+G 可看反汇编(从汇编层面优化)
 typedef char	I8;
@@ -167,11 +169,14 @@ new和delete在对象创建的时候自动执行构造函数，对象消亡之前会自动执行析构函数。
 		pSS = pSSS;
 		Out(pSSS->GetName());
 	}
-	delete pSS;//释放掉该内存
+	delete pSS;//释放掉该内存/
+//----------------隐式转换---------------------------
+	Out("");
+	Implicit_Explicit im0 = 22;//隐式转换
+	Implicit_Explicit im1("Hello");//explicit关键字限制隐式转换
+//--------------------------------------------------
 
 
-
-	//Out(pSS->GetName());
 	std::cin.get();
 }
 /*
