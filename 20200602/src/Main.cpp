@@ -220,7 +220,7 @@ new和delete在对象创建的时候自动执行构造函数，对象消亡之前会自动执行析构函数。
 	}
 //------------------智能指针------------------------------
 	Out("智能指针---------------------------------------------");
-	{//唯一指针
+	{//唯一指针,不能复制('='被重构了)
 		Out("unique唯一指针: ");
 		std::unique_ptr<Lifttime> smart_uniqueptr = std::make_unique<Lifttime>();//unique_ptr(唯一指针，只有一个指针能指向该内存地址)静止隐式转换;可自动销毁
 /*
@@ -240,13 +240,14 @@ new和delete在对象创建的时候自动执行构造函数，对象消亡之前会自动执行析构函数。
 	}
 	{
 		std::shared_ptr<Lifttime> sharedptr;
+		std::weak_ptr<Lifttime> smart_weakptr;//弱指针不会让共享指针的计数+1
 		{//共享指针,当所有指向该内存地址的指针都消失后，对象才会自动delete
-			Out("shaerd共享指针:");
+			Out("shared共享指针:");
 			std::shared_ptr<Lifttime> smart_sharedptr = std::make_shared<Lifttime>();
-			sharedptr = smart_sharedptr;
+			sharedptr = smart_sharedptr;//内存被引用次数+1
+			smart_weakptr = smart_sharedptr;
 		}
 	}
-	
 	std::cin.get();
 }
 /*
