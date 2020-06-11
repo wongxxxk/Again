@@ -138,6 +138,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\Arrow.cpp" />
     <ClCompile Include="src\Implicit_Explicit.cpp" />
     <ClCompile Include="src\KeyWordThis.cpp" />
     <ClCompile Include="src\PrueVirtual.cpp" />
@@ -151,6 +152,7 @@
     <ClCompile Include="src\VirtualFun.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\Arrow.h" />
     <ClInclude Include="src\Implicit_Explicit.h" />
     <ClInclude Include="src\KeyWordThis.h" />
     <ClInclude Include="src\PrueVirtual.h" />

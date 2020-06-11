@@ -10,7 +10,7 @@
 #include "Implicit_Explicit.h"
 #include "KeyWordThis.h"
 #include <memory>//智能指针
-
+#include "Arrow.h"
 //#include "Log.h"
 //ALT+G 可看反汇编(从汇编层面优化)
 typedef char	I8;
@@ -248,6 +248,22 @@ new和delete在对象创建的时候自动执行构造函数，对象消亡之前会自动执行析构函数。
 			smart_weakptr = smart_sharedptr;
 		}
 	}
+
+//---------------------Arrow---------------------------------------
+	Out("---------------Arrow-----------------");
+	{
+		BaseArrow entity(new Base());
+		entity.GetObject()->printf();
+		entity->printf();//重构了-> 符
+	}
+
+	struct VectorArrow
+	{
+		float x, y, z;//内存间隔4字节
+	};
+
+	int offset = (int)&(((VectorArrow*)0)->y);
+	Out("->符可以看内存中某个值的偏移   "<<offset);
 	std::cin.get();
 }
 /*

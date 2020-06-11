@@ -48,6 +48,9 @@
     <ClCompile Include="src\KeyWordThis.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="src\Arrow.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Log.h">
@@ -78,6 +81,9 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="src\KeyWordThis.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Arrow.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
