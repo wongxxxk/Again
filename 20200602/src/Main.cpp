@@ -11,6 +11,9 @@
 #include "KeyWordThis.h"
 #include <memory>//智能指针
 #include "Arrow.h"
+#include <vector>
+
+
 //#include "Log.h"
 //ALT+G 可看反汇编(从汇编层面优化)
 typedef char	I8;
@@ -262,8 +265,36 @@ new和delete在对象创建的时候自动执行构造函数，对象消亡之前会自动执行析构函数。
 		float x, y, z;//内存间隔4字节
 	};
 
+	
+
 	int offset = (int)&(((VectorArrow*)0)->y);
 	Out("->符可以看内存中某个值的偏移   "<<offset);
+//-------------------Vector(动态数组\ArrayList)-------------------------------
+	Out("---------------Vector-----------------");
+	VectorArrow* VectorArrows1 = new VectorArrow[5];//堆上申请的普通静态数组
+	VectorArrows1[4].x = 5;//???
+
+	std::vector<VectorArrow> VectorArrows2;//STL动态数组
+	std::vector<VectorArrow>::iterator VectorArrows2_i;//迭代器
+	VectorArrows2.push_back({1.0,2.0,3.0});
+	VectorArrows2.push_back({4.0,5.0,6.0});
+	std::vector<int> v1{1,2,3,4,5};
+	v1.push_back(6);
+	std::vector<int>::iterator v1_i;
+
+	for (int i = 0; i < v1.size(); i++)
+	{
+		std::cout << v1[i];
+	}
+	std::cout<<std::endl;
+	v1.erase(v1.begin() + 1);
+
+	for (v1_i = v1.begin(); v1_i != v1.end(); v1_i++)//迭代器使用
+
+	{
+		std::cout << *v1_i;
+	}
+
 	std::cin.get();
 }
 /*
